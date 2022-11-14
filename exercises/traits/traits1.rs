@@ -9,6 +9,7 @@
 // implementing this trait.
 // Execute `rustlings hint traits1` or use the `hint` watch subcommand for a hint.
 
+// I AM NOT DONE
 
 trait AppendBar {
     fn append_bar(self) -> Self;
@@ -16,7 +17,13 @@ trait AppendBar {
 
 impl AppendBar for String {
     fn append_bar(self) -> Self {
-        self + "Bar" // what the hell is happening here
+        self + "Bar"
+    }
+}
+
+impl AppendBar for u64 {
+    fn append_bar(self) -> Self {
+        self + self
     }
 }
 
@@ -24,6 +31,9 @@ fn main() {
     let s = String::from("Foo");
     let s = s.append_bar();
     println!("s: {}", s);
+
+    let i = 34.append_bar();
+    println!("i {}", i);
 }
 
 #[cfg(test)]
@@ -40,6 +50,14 @@ mod tests {
         assert_eq!(
             String::from("").append_bar().append_bar(),
             String::from("BarBar")
+        );
+    }
+
+    #[test]
+    fn is_int_double() {
+        assert_eq!(
+            68,
+            34.append_bar()
         );
     }
 }
